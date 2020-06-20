@@ -1,3 +1,10 @@
+<h1>組員:</h1>
+<p>40823131</p>
+<p>40823128</p>
+<p>40823126</p>
+<p>40823124</p>
+<p>40823123</p>
+<p></p>
 <h1>每週進度</h1>
 <h4>W7: Youtube live+OBS串流、Google meet 線上教學 小組網站建立、使用SSH推送更新網頁。</h4>
 <h4>W8:組長與老師開會，組員透過live streaming觀看討論過程。</h4>
@@ -76,6 +83,30 @@ if __name__== '__main__':
 <p><strong>使用MBR啟動電腦時，將先啟動主機板之BIOS，隨後BIOS載入MBR，最後MBR啟動系統。</strong></p>
 <p><strong>GPT:GPT為GUID Partition Tableartition Table的縮寫，其更加符合現代需求，故成為逐漸取代MBR的新標準。GPT最凸顯的優勢在於它突破了MBR最大只支援2T硬碟的限制，同時使用者可以將硬碟劃分數量不限的分割槽，雖然Windows只允許GPT硬碟上最多有128個分區，但128個分區基本上已經能滿足所有人群的使用需求。</strong></p>
 <p><strong>另外，GPT並不會把引導資料都存儲在一個位置，從資訊安全的角度來看比MBR更加優秀。</strong></p>
+<h4><strong><span>W15: 利用Pypdf2切割pdf檔</span></strong></h4>
+<p><strong><span>切割PDF之.py檔</span></strong></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false"># pypdf2_ex1.py
+import os
+from PyPDF2 import PdfFileWriter, PdfFileReader
+  
+pdfReader = PdfFileReader(open("2002_Book_Real-WorldASPNETBuildingAConte.pdf", "rb"))
+information = [("WhatIsCMS",18,45)]
+  
+for page in range(len(information)):
+    pdf_writer = PdfFileWriter()
+    start = information[page][1]
+    end = information[page][2]
+    while start&lt;=end:
+        pdf_writer.addPage(pdfReader.getPage(start-1))
+        start+=1
+    if not os.path.exists("./"):
+        os.makedirs(savepath)
+    output_filename = '{}_{}_page_{}.pdf'.format(information[page][0],information[page][1], information[page][2])
+    with open(output_filename,'wb') as out:
+        pdf_writer.write(out)
+</pre>
+<h4><strong><br/><br/><span>W16: 網際程式開發</span><br/><span>W17: 利用pypdf2分割pdf與合併pdf的程式</span></strong></h4>
+<p><strong><span></span></strong></p>
 <h1><strong>Android手機鏡頭代替webcam教學</strong></h1>
 <h4><strong>step1.首先使用手機進入google play商店，下載下圖程式。</strong></h4>
 <p><img alt="" height="553" src="/images/777.jpg" width="510"/></p>
